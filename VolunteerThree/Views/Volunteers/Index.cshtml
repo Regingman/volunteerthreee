@@ -1,0 +1,291 @@
+﻿@model IEnumerable<VolunteerThree.Models.Volunteer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.dataTables.min.css" />
+
+
+
+<h1>Волонтёры</h1>
+
+@{ ViewData["Title"] = "Index"; }
+
+@*<link href="https://unpkg.com/bootstrap-table@1.18.0/dist/bootstrap-table.min.css" rel="stylesheet">*@
+@*<link href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css" rel="stylesheet">*@
+
+@*<style>
+        .select,
+        #locale {
+            width: 100%;
+        }
+
+        .like {
+            margin-right: 10px;
+        }
+    </style>*@
+
+
+@*<p>
+        <a asp-action="Create">Добавить нового волонтёра</a>
+    </p>*@
+
+
+<style media="screen">
+    tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
+
+    /*#example_next {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 9px;
+    }
+
+        #example_next:hover {
+            background-color: #1b571e;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 9px;
+            cursor: pointer;
+        }
+
+
+    #example_previous {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 9px;
+    }
+
+        #example_previous:hover {
+            background-color: #1b571e;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 9px;
+            cursor: pointer;
+        }*/
+
+    .dt-button {
+        background-color: #696060;
+        border: none;
+        color: white;
+        padding: 5px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 12px;
+        margin-bottom: 5px;
+    }
+
+    th, td {
+        text-align: left;
+        padding: 2px;
+    }
+
+    th {
+        background-color: #418b9f;
+        color: white;
+    }
+</style>
+<div class="overflow-auto">
+    <table id="example"
+           @*data-toggle="table"
+       data-search="true"
+       data-show-toggle="true"
+       data-locale="ru-RU"
+       data-show-columns="true"
+       data-show-pagination-switch="true"
+       data-show-columns-toggle-all="true"
+       data-show-fullscreen="true"
+       data-show-export="true"
+       data-export-types="['excel']"
+       data-click-to-select="true"
+       data-pagination="true"
+       data-page-list="[10, 25, 50, 100, all]"*@
+           class="display nowrap table table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.VSurname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VBirthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VPersonNumber)
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.ZonId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VPhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tfoot>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.VSurname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VBirthday)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VPersonNumber)
+                </th>
+                <th>
+
+                    @Html.DisplayNameFor(model => model.ZonId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.VPhoneNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th></th>
+            </tr>
+        </tfoot>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VSurname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VBirthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VPersonNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Zon.ZName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VPhoneNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td>
+                        @*  <a asp-action="EditList" asp-route-id="@item.VId">Изменить</a> |*@
+                        @*<a asp-action="Details" asp-route-id="@item.VId">Подробнее</a> |*@
+                        <a asp-action="Delete" asp-route-id="@item.VId">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+
+@*<input type="button" value="Распечатать" onclick="window.print();">*@
+<script src="https://code.jquery.com/jquery-3.5.1.js" charset="utf-8"></script>
+@*<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" charset="utf-8"></script>
+    <script href="https://code.jquery.com/jquery-3.5.1.js" charset="utf-8"></script>*@
+<script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/dataTables.buttons.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.flash.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.html5.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.4/js/buttons.print.min.js" charset="utf-8"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.10.21/i18n/Russian.json" charset="utf-8"></script>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Setup - add a text input to each footer cell
+        $('#example tfoot th').each(function () {
+            var title = $(this).text();
+            $(this).html('<input type="text" placeholder="Поиск" />');
+        });
+
+
+        // DataTable
+        var table = $('#example').DataTable({
+            initComplete: function () {
+                // Apply the search
+                this.api().columns().every(function () {
+                    var that = this;
+
+                    $('input', this.footer()).on('keyup change clear', function () {
+                        if (that.search() !== this.value) {
+                            that
+                                .search(this.value)
+                                .draw();
+                        }
+                    });
+
+                });
+            },
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'excel', 'pdf', 'print'
+            ],
+        });
+        $('#example tfoot tr').appendTo('#example thead');
+
+
+    });
+
+</script>
+
+
+@section scripts{
+
+    <!--JQuery-->
+    @*<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css" />
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>*@
+
+    @*<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table-locale-all.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/extensions/export/bootstrap-table-export.min.js"></script>*@
+
+
+}
+

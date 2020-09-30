@@ -1,0 +1,30 @@
+﻿@model VolunteerThree.Models.Zon
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Zon</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reg)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reg.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

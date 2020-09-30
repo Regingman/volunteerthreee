@@ -1,0 +1,65 @@
+﻿@model VolunteerThree.Models.Volunteer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<h4>
+    Эта запись будет безвозвратно удалена:
+    Вы уверены в том, что действительно хотите это сделать?
+</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VSurname)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VSurname)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VBirthday)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VBirthday)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VPersonNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VPersonNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZonId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zon.ZName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VPhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VPhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="VId" />
+        <input type="submit" value="Удалить" class="btn btn-outline-danger" /> 
+        <a asp-action="Index" class="btn btn-outline-secondary">Назад</a>
+    </form>
+</div>
